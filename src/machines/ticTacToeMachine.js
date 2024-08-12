@@ -1,7 +1,7 @@
 import { createMachine, assign } from 'xstate';
 
 import { initialContext, players } from '../constants/constants';
-import { chekingWinning } from '../utils/utils'
+import { chekingWinning } from '../utils/common/utils'
 
 const ticTacToeMachine = createMachine({
   id: 'ticTacToe',

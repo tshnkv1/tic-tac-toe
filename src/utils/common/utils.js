@@ -1,4 +1,4 @@
-import { conbinationData } from "../constants/constants";
+import { conbinationData } from "../../constants/constants";
 
 export const chekingWinning = (cells) => {
     for (let [a, b, c] of conbinationData) {
