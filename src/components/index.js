@@ -3,8 +3,9 @@ export { GameBoard } from './GameBoard';
 export {
     Layout,
     Header,
-    RestartButton,
+    CustomButton,
     Board,
     Cell,
     StatusMessage,
+    AlertSection,
 } from './StyledComponents';

@@ -1,7 +1,7 @@
-import { createMachine, assign } from 'xstate';
-
+import { createMachine, assign, sendTo } from 'xstate';
 import { initialContext, players } from '../constants/constants';
 import { chekingWinning } from '../utils/common/utils'
+
 
 const ticTacToeMachine = createMachine({
   id: 'ticTacToe',
@@ -11,10 +11,13 @@ const ticTacToeMachine = createMachine({
     playing: {
       on: {
         PLAY: {
-          actions: 'setPlayerAction',
+          actions: ['setPlayerAction', 'resetIdleTimer'],
           target: 'checkWin',
         }
       },
+      after: {
+        10000: {target: 'idle' },
+      }
     },
     checkWin: {
       always: [
@@ -33,6 +36,15 @@ const ticTacToeMachine = createMachine({
         RESTART: { target: 'playing', actions: 'resetGame' }
       }
     },
+    idle: {
+      on: {
+        RESET_IDLE: {
+          target: 'playing',
+          actions: 'resetBoard'
+        },
+      },
+      entry: () => console.log('Player is unactive'), // if user is inactive more than 10 sec
+    }
   },
 }, {
   actions: {
@@ -52,6 +64,8 @@ const ticTacToeMachine = createMachine({
     })),
 
     resetGame: assign(() => ({...initialContext})),
+
+    resetIdleTimer: sendTo(() => {}, {type: 'RESET_IDLE'}),
   },
   guards: {
     isWinner: ({context: {cells}}) => chekingWinning(cells),
