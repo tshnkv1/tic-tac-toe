@@ -12,10 +12,13 @@ const Header = styled.h1`
   color: blue;
 `;
 
-const RestartButton = styled.button`
+const CustomButton = styled.button`
   width: 100%;
   margin: 15px auto;
   padding: 10px 24px;
+`;
+
+const AlertSection = styled.div`
 `;
 
 // Board view
@@ -48,7 +51,8 @@ const StatusMessage = styled.div`
 export {
     Layout,
     Header,
-    RestartButton,
+    AlertSection,
+    CustomButton,
     Board,
     Cell,
     StatusMessage,

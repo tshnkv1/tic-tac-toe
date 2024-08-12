@@ -1,6 +1,34 @@
-# Getting Started with Create React App
+# Tic-Tac-Toe Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application is a classic Tic-Tac-Toe game implemented using React for building the user interface, XState for state management, Styled Components for styling, and Jest for testing.
+
+
+## Main Components
+1. App: Displays the Layout of the application
+2. GameBoard: The component that displays the game board and manages user input.
+3. StyledComponent: Created for custom solutions and reuse in the project
+
+
+## State and Logic
+XState Machine: Defines the game state and possible transitions:
+- idle: Waiting for the game to start.
+- playing: Players make moves, and the game continues.
+- gameOver: The game has ended, and the result (win or draw) is shown.
+
+Events:
+- PLAY: Handling a player's move.
+- RESTART: Resetting the game.
+- RESET_IDLE: To determine the user's inactivity.
+
+
+## Testing
+Jest: Used for writing unit tests that verify:
+
+- Component rendering.
+- Correct handling of events.
+- State management logic.
+
+
 
 ## Available Scripts
 
